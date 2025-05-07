@@ -7,7 +7,7 @@ function createMainWindow(){
             preload: path.join(__dirname, 'preload.js')
         }
     })
-    mainWindow.loadFile('Telas/index.html')
+    mainWindow.loadFile('src/telas/index.html')
 }
 
 app.whenReady().then(createMainWindow)
