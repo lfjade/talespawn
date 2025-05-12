@@ -1,8 +1,2 @@
-const information = document.getElementById('info')
-information.innerText = `Este aplicativo está usando Node (v. ${versions.node()}) e Electron (v. ${versions.electron()})`
-
-const vers = async () => {
-    const res = await window.versions
-}
-
-vers ()
+const information = document.getElementById('info') // cria a constante 'information' e linka ela ao objeto de id 'info' no html
+information.innerText = `Este aplicativo está usando Node (v. ${versions.node()}) e Electron (v. ${versions.electron()})` // transforma o texto dentro da variável 'information' num descritor de versões, consumindo as versões locais do node e do electron fornecidas pelo context preload.

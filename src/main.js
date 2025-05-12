@@ -1,10 +1,10 @@
-const {app, BrowserWindow, ipcMain} = require('electron') // importa os módulos do Electron app, BrowserWindow e icpMain e armazena em constantes com os nomes respectivos 
-const path = require('path') // importa o módlo 'path' e adiciona à constante de mesmo nome
+const {app, BrowserWindow, ipcMain} = require('electron') // faz a desestruturação do Electron, importando apenas os objetos app, BrowserWindow e ipcMain
+const path = require('path') // importa o módulo 'path', que ajuda a lidar com diretórios de forma segura
 
-async function createMainWindow(){ // função assincrona para criar a janela main;
-    const mainWindow = new BrowserWindow({
-        webPreferences: {
-            preload: path.join(__dirname, 'preload.js')
+async function createMainWindow(){ // função assincrona para criar a janela main, que espera o carregamento da janela html
+    const mainWindow = new BrowserWindow({ // cria uma nova janela e armazena na constante mainWindow
+        webPreferences: { // define o preload
+            preload: path.join(__dirname, 'preload.js') // monta o caminho até o preload
         }
     }) // armazena na constante mainWindow o novo objeto da classe BrowserWindow, com o atributo 'webpreferences' setado para consumir o arquivo 'preload.js'
      await mainWindow.loadFile('src/telas/index.html') // chama o método loadFile de mainWindow recém criado executando o arquivo HTML expecificado no caminho
@@ -17,5 +17,3 @@ app.on('window-all-closed', () => { // instancia app com o evento 'window-all-cl
         app.quit() // fecha as janelas, encerra os processos e dispara eventos de saída (se existirem)
     }
 })
-
-// implementar o preload
